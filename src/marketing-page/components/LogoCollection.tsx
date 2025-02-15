@@ -5,22 +5,26 @@ import Grid from '@mui/material/Grid';
 import {useTheme} from '@mui/system';
 
 const whiteLogos = [
-    'src/img/fartcoin.png',
-    'src/img/buttholecoin.png',
-    'src/img/fartnomicscoin.png',
+    'qwen.png',
+    'seek.png',
+    'openB.png',
+    'mind.png',
+    'goog.png'
 ];
 
 const darkLogos = [
-    'src/img/fartcoin.png',
-    'src/img/buttholecoin.png',
-    'src/img/fartnomicscoin.png',
+    'qwen.png',
+    'seek.png',
+    'open.png',
+    'mindW.png',
+    'goog.png'
 ];
 
 const logoStyle = {
-    width: '300px',
-    height: '70px',
+    width: '100px',
+    height: '100px',
     margin: '0 32px',
-    opacity: 0.7,
+    // opacity: 0.7,
 };
 
 export default function LogoCollection() {
@@ -35,7 +39,7 @@ export default function LogoCollection() {
                 align="center"
                 sx={{color: 'text.secondary'}}
             >
-                Trusted by the best communities
+                Powered by
             </Typography>
             <Grid container sx={{justifyContent: 'center', mt: 2, opacity: 0.6}}>
                 {logos.map((logo, index) => (

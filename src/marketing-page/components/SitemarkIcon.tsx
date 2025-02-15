@@ -3,11 +3,11 @@ import SvgIcon from '@mui/material/SvgIcon';
 
 export default function SitemarkIcon() {
     return (
-        <SvgIcon sx={{height: 21, width: 100, mr: 2}}>
+        <SvgIcon sx={{height: 21, width: 110, mr: 0}}>
             <svg
-                width={100}
+                width={110}
                 height={19}
-                viewBox="0 0 102 19"
+                viewBox="0 0 112 19"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
             >

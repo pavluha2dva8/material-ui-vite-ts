@@ -96,9 +96,10 @@ export default function Hero() {
                             width: {sm: '100%', md: '80%'},
                         }}
                     >
-                        Innovative dashboard, leveraging advanced AI tools to analyze trades and
-                        track memecoin trends. Empower your decision-making with actionable insights and cutting-edge
-                        features designed for the ever-evolving crypto market.
+                        Automatically analyze bundlers, snipers, and wallet behaviors, including whales and smart
+                        wallets. Track reused accounts, detect identical project patterns, and uncover suspicious
+                        activities effortlessly. FartnomicsAI equips you with cutting-edge tools to stay ahead of
+                        trends, avoid rug pulls, and make confident decisions in the dynamic MemeCoin ecosystem.
                     </Typography>
                     <Stack
                         direction={{xs: 'column', sm: 'row'}}
@@ -138,9 +139,8 @@ export default function Hero() {
                         color="text.secondary"
                         sx={{textAlign: 'center'}}
                     >
-                        By clicking &quot;Get Invite Link,&quot; you acknowledge that you will be added to the queue for
+                        By clicking &quot;Get Invite Link&quot;, you acknowledge that you will be added to the queue for
                         product access.
-
                     </Typography>
                 </Stack>
                 <StyledBox id="image"/>

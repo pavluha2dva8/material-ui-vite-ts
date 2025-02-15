@@ -16,7 +16,7 @@ const items = [
         icon: <ViewQuiltRoundedIcon/>,
         title: 'Dashboard',
         description:
-            'This item could provide a snapshot of the most important metrics or data points related to the product.',
+            'BroccoliAI provide a snapshot of the most important metrics or data points related to the agents.',
         imageLight: `url("${'https://mui.com'}/static/images/templates/templates-images/dash-light.png")`,
         imageDark: `url("${'https://mui.com'}/static/images/templates/templates-images/dash-dark.png")`,
     },
@@ -24,7 +24,7 @@ const items = [
         icon: <EdgesensorHighRoundedIcon/>,
         title: 'Mobile integration',
         description:
-            'This item could provide information about the mobile app version of the product.',
+            'Easy access to full functionality',
         imageLight: `url("${'https://mui.com'}/static/images/templates/templates-images/mobile-light.png")`,
         imageDark: `url("${'https://mui.com'}/static/images/templates/templates-images/mobile-dark.png")`,
     },
@@ -32,7 +32,7 @@ const items = [
         icon: <DevicesRoundedIcon/>,
         title: 'Available on all platforms',
         description:
-            'This item could let users know the product is available on all platforms, such as web, mobile, and desktop.',
+            'BroccoliAI is available on all platforms, such as web, mobile, and desktop.',
         imageLight: `url("${'https://mui.com'}/static/images/templates/templates-images/devices-light.png")`,
         imageDark: `url("${'https://mui.com'}/static/images/templates/templates-images/devices-dark.png")`,
     },
@@ -151,15 +151,14 @@ export default function Features() {
                     gutterBottom
                     sx={{color: 'text.primary'}}
                 >
-                    Product features
-                </Typography>
+                    Create, launch, and chain<br/>
+                    AI agents effortlessly </Typography>
                 <Typography
                     variant="body1"
                     sx={{color: 'text.secondary', mb: {xs: 2, sm: 4}}}
                 >
-                    Provide a brief overview of the key features of the product. For example,
-                    you could list the number of features, their types or benefits, and
-                    add-ons.
+                    Serverless AI agent deployment happens in the cloud, enabling users to create and manage AI
+                    workflows without server infrastructure.
                 </Typography>
             </Box>
             <Box
