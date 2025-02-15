@@ -13,6 +13,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ColorModeIconDropdown from '../../shared-theme/ColorModeIconDropdown';
 import Sitemark from './SitemarkIcon';
+import {Dialog, DialogActions, DialogContent, DialogTitle} from "@mui/material";
+import TextField from "@mui/material/TextField";
+import theme from "../../theme";
 
 const StyledToolbar = styled(Toolbar)(({theme}) => ({
     display: 'flex',
@@ -31,112 +34,197 @@ const StyledToolbar = styled(Toolbar)(({theme}) => ({
 }));
 
 export default function AppAppBar() {
-    const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const [openSignUp, setOpenSignUp] = React.useState(false);
+  const [openSignIn, setOpenSignIn] = React.useState(false);
 
-    const toggleDrawer = (newOpen: boolean) => () => {
-        setOpen(newOpen);
-    };
+  const toggleDrawer = (newOpen: boolean) => () => {
+    setOpen(newOpen);
+  };
 
-    return (
-        <AppBar
-            position="fixed"
-            enableColorOnDark
+
+  const handleOpenSignUp = () => {
+    setOpenSignUp(true);
+  };
+
+  const handleCloseSignUp = () => {
+    setOpenSignUp(false);
+  };
+
+  const handleOpenSignIn = () => {
+    setOpenSignIn(true);
+  };
+
+  const handleCloseSignIn = () => {
+    setOpenSignIn(false);
+  };
+
+  return (
+    <AppBar
+      position="fixed"
+      enableColorOnDark
+      sx={{
+        boxShadow: 0,
+        bgcolor: 'transparent',
+        backgroundImage: 'none',
+        mt: 'calc(var(--template-frame-height, 0px) + 28px)',
+      }}
+    >
+      <Container maxWidth="lg">
+        <StyledToolbar variant="dense" disableGutters>
+          <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
+            <Sitemark />
+            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+              <Button variant="text" color="info" size="small">
+                Features
+              </Button>
+              <Button variant="text" color="info" size="small">
+                Testimonials
+              </Button>
+              <Button variant="text" color="info" size="small">
+                Highlights
+              </Button>
+              <Button variant="text" color="info" size="small">
+                Pricing
+              </Button>
+              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
+                FAQ
+              </Button>
+              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
+                Blog
+              </Button>
+            </Box>
+          </Box>
+          <Box
             sx={{
-                boxShadow: 0,
-                bgcolor: 'transparent',
-                backgroundImage: 'none',
-                mt: 'calc(var(--template-frame-height, 0px) + 28px)',
+              display: { xs: 'none', md: 'flex' },
+              gap: 1,
+              alignItems: 'center',
             }}
-        >
-            <Container maxWidth="lg">
-                <StyledToolbar variant="dense" disableGutters>
-                    <Box sx={{flexGrow: 1, display: 'flex', alignItems: 'center', px: 0}}>
-                        <Sitemark/>
-                        <Box sx={{display: {xs: 'none', md: 'flex'}}}>
-                            <Button variant="text" color="info" size="small">
-                                Features
-                            </Button>
-                            <Button variant="text" color="info" size="small">
-                                Testimonials
-                            </Button>
-                            <Button variant="text" color="info" size="small">
-                                Highlights
-                            </Button>
-                            <Button variant="text" color="info" size="small">
-                                Pricing
-                            </Button>
-                            <Button variant="text" color="info" size="small" sx={{minWidth: 0}}>
-                                FAQ
-                            </Button>
-                            <Button variant="text" color="info" size="small" sx={{minWidth: 0}}>
-                                Blog
-                            </Button>
-                        </Box>
-                    </Box>
-                    <Box
-                        sx={{
-                            display: {xs: 'none', md: 'flex'},
-                            gap: 1,
-                            alignItems: 'center',
-                        }}
-                    >
-                        <Button color="primary" variant="text" size="small">
-                            Sign in
-                        </Button>
-                        <Button color="primary" variant="contained" size="small">
-                            Sign up
-                        </Button>
-                        <ColorModeIconDropdown/>
-                    </Box>
-                    <Box sx={{display: {xs: 'flex', md: 'none'}, gap: 1}}>
-                        <ColorModeIconDropdown size="medium"/>
-                        <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
-                            <MenuIcon/>
-                        </IconButton>
-                        <Drawer
-                            anchor="top"
-                            open={open}
-                            onClose={toggleDrawer(false)}
-                            PaperProps={{
-                                sx: {
-                                    top: 'var(--template-frame-height, 0px)',
-                                },
-                            }}
-                        >
-                            <Box sx={{p: 2, backgroundColor: 'background.default'}}>
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        justifyContent: 'flex-end',
-                                    }}
-                                >
-                                    <IconButton onClick={toggleDrawer(false)}>
-                                        <CloseRoundedIcon/>
-                                    </IconButton>
-                                </Box>
+          >
+            <Button color="primary" variant="text" size="small" onClick={handleOpenSignIn}>
+              Sign in
+            </Button>
+            <Button color="primary" variant="contained" size="small" onClick={handleOpenSignUp}>
+              Sign up
+            </Button>
+            <ColorModeIconDropdown />
+          </Box>
+          <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>
+            <ColorModeIconDropdown size="medium" />
+            <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
+              <MenuIcon />
+            </IconButton>
+            <Drawer
+              anchor="top"
+              open={open}
+              onClose={toggleDrawer(false)}
+              PaperProps={{
+                sx: {
+                  top: 'var(--template-frame-height, 0px)',
+                },
+              }}
+            >
+              <Box sx={{ p: 2, backgroundColor: 'background.default' }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                  }}
+                >
+                  <IconButton onClick={toggleDrawer(false)}>
+                    <CloseRoundedIcon />
+                  </IconButton>
+                </Box>
 
-                                <MenuItem>Features</MenuItem>
-                                <MenuItem>Testimonials</MenuItem>
-                                <MenuItem>Highlights</MenuItem>
-                                <MenuItem>Pricing</MenuItem>
-                                <MenuItem>FAQ</MenuItem>
-                                <MenuItem>Blog</MenuItem>
-                                <Divider sx={{my: 3}}/>
-                                <MenuItem>
-                                    <Button color="primary" variant="contained" fullWidth>
-                                        Sign up
-                                    </Button>
-                                </MenuItem>
-                                <MenuItem>
-                                    <Button color="primary" variant="outlined" fullWidth>
-                                        Sign in
-                                    </Button>
-                                </MenuItem>
-                            </Box>
-                        </Drawer>
-                    </Box>
-                </StyledToolbar>
-            </Container>
-        </AppBar>
-    );
+                <MenuItem>Features</MenuItem>
+                <MenuItem>Testimonials</MenuItem>
+                <MenuItem>Highlights</MenuItem>
+                <MenuItem>Pricing</MenuItem>
+                <MenuItem>FAQ</MenuItem>
+                <MenuItem>Blog</MenuItem>
+                <Divider sx={{ my: 3 }} />
+                <MenuItem>
+                  <Button color="primary" variant="contained" fullWidth onClick={handleOpenSignIn}>
+                    Sign up
+                  </Button>
+                </MenuItem>
+                <MenuItem>
+                  <Button color="primary" variant="outlined" fullWidth onClick={handleOpenSignUp}>
+                    Sign in
+                  </Button>
+                </MenuItem>
+              </Box>
+            </Drawer>
+          </Box>
+        </StyledToolbar>
+      </Container>
+      <Dialog open={openSignUp} onClose={handleCloseSignUp}>
+        <DialogTitle>
+          Sign <span style={{ color: theme.palette.primary.main }}>Up</span>
+        </DialogTitle>
+        <DialogContent>
+          <TextField
+              autoFocus
+              margin="dense"
+              label="Full Name"
+              type="text"
+              fullWidth
+              variant="standard"
+          />
+          <TextField
+              margin="dense"
+              label="Email Address"
+              type="email"
+              fullWidth
+              variant="standard"
+          />
+          <TextField
+              margin="dense"
+              label="Password"
+              type="password"
+              fullWidth
+              variant="standard"
+          />
+
+        </DialogContent>
+        <DialogActions>
+          <Box padding="0 16px"   sx={{
+            display: { xs: 'none', md: 'flex' },
+            gap: 1,
+            alignItems: 'center',
+          }}>
+          <Button onClick={handleCloseSignUp} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleCloseSignUp} color="primary" variant='contained'>
+            Sign Up
+          </Button>
+          </Box>
+        </DialogActions>
+      </Dialog>
+      <Dialog open={openSignIn} onClose={handleCloseSignIn}>
+        <DialogTitle>Sign  <span style={{ color: theme.palette.primary.main }}>In</span></DialogTitle>
+        <DialogContent>
+          <TextField autoFocus margin="dense" label="Email Address" type="email" fullWidth variant="standard" />
+          <TextField margin="dense" label="Password" type="password" fullWidth variant="standard"/>
+        </DialogContent>
+        <DialogActions >
+          <Box padding="0 16px"     sx={{
+            display: { xs: 'none', md: 'flex' },
+            gap: 1,
+            alignItems: 'center',
+          }}>
+            <Button onClick={handleCloseSignIn} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={handleCloseSignIn} color="primary" variant='contained'>
+              Sign In
+            </Button>
+          </Box>
+
+        </DialogActions>
+      </Dialog>
+    </AppBar>
+  );
 }
