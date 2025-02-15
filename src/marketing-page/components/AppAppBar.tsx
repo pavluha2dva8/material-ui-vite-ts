@@ -13,9 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import ColorModeIconDropdown from '../../shared-theme/ColorModeIconDropdown';
 import Sitemark from './SitemarkIcon';
-import {Dialog, DialogActions, DialogContent, DialogTitle} from "@mui/material";
-import TextField from "@mui/material/TextField";
-import theme from "../../theme";
+import {useNavigate} from "react-router-dom";
 
 const StyledToolbar = styled(Toolbar)(({theme}) => ({
     display: 'flex',
@@ -35,28 +33,18 @@ const StyledToolbar = styled(Toolbar)(({theme}) => ({
 
 export default function AppAppBar() {
   const [open, setOpen] = React.useState(false);
-  const [openSignUp, setOpenSignUp] = React.useState(false);
-  const [openSignIn, setOpenSignIn] = React.useState(false);
+  const navigate = useNavigate();
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
 
-
-  const handleOpenSignUp = () => {
-    setOpenSignUp(true);
+  const handleSignIn = () => {
+    navigate('/sign-in');
   };
 
-  const handleCloseSignUp = () => {
-    setOpenSignUp(false);
-  };
-
-  const handleOpenSignIn = () => {
-    setOpenSignIn(true);
-  };
-
-  const handleCloseSignIn = () => {
-    setOpenSignIn(false);
+  const handleSignUp = () => {
+    navigate('/sign-up');
   };
 
   return (
@@ -102,10 +90,10 @@ export default function AppAppBar() {
               alignItems: 'center',
             }}
           >
-            <Button color="primary" variant="text" size="small" onClick={handleOpenSignIn}>
+            <Button color="primary" variant="text" size="small" onClick={handleSignIn}>
               Sign in
             </Button>
-            <Button color="primary" variant="contained" size="small" onClick={handleOpenSignUp}>
+            <Button color="primary" variant="contained" size="small" onClick={handleSignUp}>
               Sign up
             </Button>
             <ColorModeIconDropdown />
@@ -145,12 +133,12 @@ export default function AppAppBar() {
                 <MenuItem>Blog</MenuItem>
                 <Divider sx={{ my: 3 }} />
                 <MenuItem>
-                  <Button color="primary" variant="contained" fullWidth onClick={handleOpenSignIn}>
+                  <Button color="primary" variant="contained" fullWidth onClick={handleSignUp}>
                     Sign up
                   </Button>
                 </MenuItem>
                 <MenuItem>
-                  <Button color="primary" variant="outlined" fullWidth onClick={handleOpenSignUp}>
+                  <Button color="primary" variant="outlined" fullWidth onClick={handleSignIn}>
                     Sign in
                   </Button>
                 </MenuItem>
@@ -159,72 +147,6 @@ export default function AppAppBar() {
           </Box>
         </StyledToolbar>
       </Container>
-      <Dialog open={openSignUp} onClose={handleCloseSignUp}>
-        <DialogTitle>
-          Sign <span style={{ color: theme.palette.primary.main }}>Up</span>
-        </DialogTitle>
-        <DialogContent>
-          <TextField
-              autoFocus
-              margin="dense"
-              label="Full Name"
-              type="text"
-              fullWidth
-              variant="standard"
-          />
-          <TextField
-              margin="dense"
-              label="Email Address"
-              type="email"
-              fullWidth
-              variant="standard"
-          />
-          <TextField
-              margin="dense"
-              label="Password"
-              type="password"
-              fullWidth
-              variant="standard"
-          />
-
-        </DialogContent>
-        <DialogActions>
-          <Box padding="0 16px"   sx={{
-            display: { xs: 'none', md: 'flex' },
-            gap: 1,
-            alignItems: 'center',
-          }}>
-          <Button onClick={handleCloseSignUp} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleCloseSignUp} color="primary" variant='contained'>
-            Sign Up
-          </Button>
-          </Box>
-        </DialogActions>
-      </Dialog>
-      <Dialog open={openSignIn} onClose={handleCloseSignIn}>
-        <DialogTitle>Sign  <span style={{ color: theme.palette.primary.main }}>In</span></DialogTitle>
-        <DialogContent>
-          <TextField autoFocus margin="dense" label="Email Address" type="email" fullWidth variant="standard" />
-          <TextField margin="dense" label="Password" type="password" fullWidth variant="standard"/>
-        </DialogContent>
-        <DialogActions >
-          <Box padding="0 16px"     sx={{
-            display: { xs: 'none', md: 'flex' },
-            gap: 1,
-            alignItems: 'center',
-          }}>
-            <Button onClick={handleCloseSignIn} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={handleCloseSignIn} color="primary" variant='contained'>
-              Sign In
-            </Button>
-          </Box>
-
-        </DialogActions>
-      </Dialog>
     </AppBar>
   );
 }
