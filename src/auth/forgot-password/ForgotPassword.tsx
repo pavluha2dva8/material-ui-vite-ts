@@ -51,7 +51,21 @@ export default function ForgotPassword(props: { disableCustomTheme?: boolean }) 
                         FartnomicsAI
                     </Typography>
                     </Typography>
-                <Box sx={{ display: 'flex', alignItems: 'center', flexDirection:'column', gap:'1rem', width: '450px', p:'40px',borderRadius:'10px',backgroundColor: theme.palette.background.default}}>
+                <Box
+                    sx={(theme) => ({
+                        display: 'flex',
+                        alignItems: 'center',
+                        flexDirection:'column',
+                        gap:'1rem',
+                        width: '450px',
+                        p:'40px',
+                        borderRadius:'10px',
+                        backgroundColor: '#d9d9d9',
+                        ...theme.applyStyles('dark', {
+                            backgroundColor: theme.palette.background.default
+                        }),
+                    })}
+                 >
                     <Box  sx={{ display: 'flex', flexDirection:'column',alignItems: 'center'}}>
                         <Typography
                             variant="h1"

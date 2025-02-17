@@ -59,7 +59,19 @@ export default function SignUpPage(props: { disableCustomTheme?: boolean }) {
                         FartnomicsAI
                     </Typography>
                     </Typography>
-                <Box sx={{ display: 'flex', alignItems: 'start', flexDirection:'column', width: '450px', p:'40px',borderRadius:'10px',backgroundColor: theme.palette.background.default}}>
+                <Box
+                    sx={(theme) => ({
+                        display: 'flex',
+                        alignItems: 'start',
+                        flexDirection:'column',
+                        width: '450px',
+                        p:'40px',
+                        borderRadius:'10px',
+                        backgroundColor: '#d9d9d9',
+                        ...theme.applyStyles('dark', {
+                            backgroundColor: theme.palette.background.default
+                        }),
+                    })}>
                     <Box  sx={{ display: 'flex',justifyContent:'space-between', width:'100%', alignItems: 'center' }}>
                         <Typography
                             variant="h1"
