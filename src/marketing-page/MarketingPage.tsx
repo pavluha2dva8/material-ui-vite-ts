@@ -20,18 +20,24 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
             <Hero/>
             <div>
                 <LogoCollection/>
-                <Features/>
+                <div id="features">
+                    <Features/>
+                </div>
                 <Divider/>
-                {/*<Testimonials/>*/}
-                {/*<Divider/>*/}
-                <Highlights/>
+                <div id="highlights">
+                    <Highlights/>
+                </div>
                 <Divider/>
-                <Pricing/>
+                <div id="pricing">
+                    <Pricing/>
+                </div>
                 <Divider/>
-                <FAQ/>
+                <div id="faq">
+                    <FAQ/>
+                </div>
                 <Divider/>
-                <Footer/>
-            </div>
+                    <Footer/>
+                </div>
         </AppTheme>
-    );
+);
 }

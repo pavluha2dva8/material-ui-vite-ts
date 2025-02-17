@@ -47,6 +47,14 @@ export default function AppAppBar() {
     navigate('/sign-up');
   };
 
+    const handleScroll = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+
   return (
     <AppBar
       position="fixed"
@@ -60,26 +68,20 @@ export default function AppAppBar() {
     >
       <Container maxWidth="lg">
         <StyledToolbar variant="dense" disableGutters>
-          <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
+          <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0, gap: 5 }}>
             <Sitemark />
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Button variant="text" color="info" size="small">
+            <Box sx={{ display: { xs: 'none', md: 'flex', gap: 10} }}>
+              <Button variant="text" color="info" size="small"  onClick={() => handleScroll('features')}>
                 Features
               </Button>
-              <Button variant="text" color="info" size="small">
-                Testimonials
-              </Button>
-              <Button variant="text" color="info" size="small">
+              <Button variant="text" color="info" size="small"  onClick={() => handleScroll('highlights')}>
                 Highlights
               </Button>
-              <Button variant="text" color="info" size="small">
+              <Button variant="text" color="info" size="small" onClick={() => handleScroll('pricing')}>
                 Pricing
               </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
+              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }} onClick={() => handleScroll('faq')}>
                 FAQ
-              </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
-                Blog
               </Button>
             </Box>
           </Box>
