@@ -14,42 +14,38 @@ import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 
 const tiers = [
     {
-        title: 'Free',
+        title: 'Scout',
         price: '0',
         description: [
-            '10 templates included',
-            '2 GB of storage',
-            'Help center access',
-            'Email support',
+            'Access basic tools for tracking MemeCoin trends and market alerts.',
+            'Monitor key market behaviors with limited AI analysis.',
+            'Receive essential support through our help center.',
         ],
         buttonText: 'Sign up for free',
         buttonVariant: 'outlined',
         buttonColor: 'primary',
     },
     {
-        title: 'Professional',
+        title: 'Trench Warrior',
         subheader: 'Recommended',
-        price: '0.01',
+        price: '9.99',
         description: [
-            '20 templates included',
-            '10 GB of storage',
-            'Help center access',
-            'Priority email support',
-            'Dedicated team',
-            'Best deals',
+            'Gain access to advanced analytics and trend tracking tools.',
+            'Unlock deeper insights into whale activities and suspicious patterns.',
+            'Get priority email support and access to our dedicated team.',
+            'Take advantage of exclusive market deals and tailored alerts.',
         ],
         buttonText: 'Start now',
         buttonVariant: 'contained',
         buttonColor: 'secondary',
     },
     {
-        title: 'Enterprise',
-        price: '~0.001',
+        title: 'Cabal',
+        price: '29.99',
         description: [
-            '50 templates included',
-            '30 GB of storage',
-            'Help center access',
-            'Phone & email support',
+            'Unlock full access to premium AI-powered trade analysis.',
+            'Monitor whale and sniper activities in real-time for enhanced decision-making.',
+            'Get personalized alerts and dedicated support via phone and email.',
         ],
         buttonText: 'Contact us',
         buttonVariant: 'outlined',
@@ -86,9 +82,10 @@ export default function Pricing() {
                     Pricing
                 </Typography>
                 <Typography variant="body1" sx={{color: 'text.secondary'}}>
-                    Stop overpaying for unused resources. With us, you only pay for the exact time your agent runs.
-                    Unlike traditional models that charge for a full month (720 hours), we bill per second of agent
-                    execution, making it fair and cost-effective.
+                    Choose a plan that fits your needs and unlock the full potential of FartnomicsAI. Whether you’re
+                    just starting or ready to dive deep into advanced features, we have a solution for every type of
+                    user. From free access to premium insights, find the plan that suits your journey in the MemeCoin
+                    ecosystem.
                 </Typography>
             </Box>
             <Grid
@@ -160,7 +157,7 @@ export default function Pricing() {
                                         ${tier.price}
                                     </Typography>
                                     <Typography component="h3" variant="h6">
-                                        &nbsp; per minute
+                                        &nbsp;/ month
                                     </Typography>
                                 </Box>
                                 <Divider sx={{my: 2, opacity: 0.8, borderColor: 'divider'}}/>

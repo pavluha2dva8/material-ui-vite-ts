@@ -16,7 +16,7 @@ const items = [
         icon: <ViewQuiltRoundedIcon/>,
         title: 'Dashboard',
         description:
-            'BroccoliAI provide a snapshot of the most important metrics or data points related to the agents.',
+            'Access real-time analytics to track wallet behaviors, detect trends, and uncover suspicious activities. Designed for simplicity and precision, our dashboard ensures you stay informed and in control.',
         imageLight: `url("${'https://mui.com'}/static/images/templates/templates-images/dash-light.png")`,
         imageDark: `url("${'https://mui.com'}/static/images/templates/templates-images/dash-dark.png")`,
     },
@@ -24,7 +24,7 @@ const items = [
         icon: <EdgesensorHighRoundedIcon/>,
         title: 'Mobile integration',
         description:
-            'Easy access to full functionality',
+            'Stay connected on the go with our seamless Telegram bot integration. Receive real-time announcements, alerts, and insights directly to your device, ensuring you never miss a critical update or opportunity.',
         imageLight: `url("${'https://mui.com'}/static/images/templates/templates-images/mobile-light.png")`,
         imageDark: `url("${'https://mui.com'}/static/images/templates/templates-images/mobile-dark.png")`,
     },
@@ -32,7 +32,7 @@ const items = [
         icon: <DevicesRoundedIcon/>,
         title: 'Available on all platforms',
         description:
-            'BroccoliAI is available on all platforms, such as web, mobile, and desktop.',
+            'Enjoy full functionality across all devices. Whether on the web, tablet, or phone, FartnomicsAI provides a seamless experience, keeping you connected and in control.',
         imageLight: `url("${'https://mui.com'}/static/images/templates/templates-images/devices-light.png")`,
         imageDark: `url("${'https://mui.com'}/static/images/templates/templates-images/devices-dark.png")`,
     },
@@ -151,14 +151,14 @@ export default function Features() {
                     gutterBottom
                     sx={{color: 'text.primary'}}
                 >
-                    Create, launch, and chain<br/>
-                    AI agents effortlessly </Typography>
+                    Powerful Features That Set Us Apart
+                </Typography>
                 <Typography
                     variant="body1"
                     sx={{color: 'text.secondary', mb: {xs: 2, sm: 4}}}
                 >
-                    Serverless AI agent deployment happens in the cloud, enabling users to create and manage AI
-                    workflows without server infrastructure.
+                    From advanced AI-driven analysis to seamless crypto tools, FartnomicsAI delivers everything you need
+                    to thrive in the MemeCoin ecosystem.
                 </Typography>
             </Box>
             <Box

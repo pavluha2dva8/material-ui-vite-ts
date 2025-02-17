@@ -9,7 +9,6 @@ import Features from "./components/Features";
 import Pricing from "./components/Pricing";
 import LogoCollection from "./components/LogoCollection";
 import Highlights from "./components/Highlights";
-import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
 
 export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
@@ -23,8 +22,8 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
                 <LogoCollection/>
                 <Features/>
                 <Divider/>
-                <Testimonials/>
-                <Divider/>
+                {/*<Testimonials/>*/}
+                {/*<Divider/>*/}
                 <Highlights/>
                 <Divider/>
                 <Pricing/>

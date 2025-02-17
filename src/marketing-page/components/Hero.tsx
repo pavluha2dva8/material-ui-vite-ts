@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import visuallyHidden from '@mui/utils/visuallyHidden';
 import {styled} from '@mui/material/styles';
+import SitemarkPureIcon from "./SitemarkPure";
 
 const StyledBox = styled('div')(({theme}) => ({
     alignSelf: 'center',
@@ -89,6 +90,24 @@ export default function Hero() {
                             FartnomicsAI
                         </Typography>
                     </Typography>
+                    <a
+                        href="#"
+                    >
+                        <Box
+                            sx={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '8px 16px',
+                                borderRadius: '16px', // Rounded corners
+                                background: 'linear-gradient(45deg, #2575fc, #6a11cb)', // Change gradient on hover
+                                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)', // Increase shadow on hover
+
+                            }}
+                        >
+                            <SitemarkPureIcon/>
+                        </Box>
+                    </a>
                     <Typography
                         sx={{
                             textAlign: 'center',
