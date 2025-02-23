@@ -1,6 +1,6 @@
 import * as React from "react";
-import { useState } from "react";
-import { useSnackbar } from "notistack";
+import {useState} from "react";
+import {useSnackbar} from "notistack";
 import TextField from "@mui/material/TextField";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppTheme from "../../shared-theme/AppTheme";
@@ -14,7 +14,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import theme from "../../theme";
 
 const xThemeComponents = {
@@ -26,8 +26,9 @@ const xThemeComponents = {
 
 export default function SignUpPage(props: { disableCustomTheme?: boolean }) {
     const navigate = useNavigate();
-    const { enqueueSnackbar } = useSnackbar();
+    const {enqueueSnackbar} = useSnackbar();
     const [email, setEmail] = useState("");
+    const [pass, setPass] = useState("");
 
     const handleSignIn = () => {
         navigate("/sign-in");
@@ -39,17 +40,20 @@ export default function SignUpPage(props: { disableCustomTheme?: boolean }) {
     };
 
     const handleSignUp = () => {
-        console.log(!validateEmail(email))
         if (!validateEmail(email)) {
-            enqueueSnackbar("Invalid email address", { variant: "error" });
+            enqueueSnackbar("Invalid email address", {variant: "error"});
             return;
         }
-        enqueueSnackbar("Signed up successfully!", { variant: "success" });
+        if (pass.length < 8) {
+            enqueueSnackbar("Password must be at least 8 characters long", {variant: "error"});
+            return;
+        }
+        enqueueSnackbar("Invalid invite code", {variant: "error"});
     };
 
     return (
         <AppTheme {...props} themeComponents={xThemeComponents}>
-            <CssBaseline enableColorScheme />
+            <CssBaseline enableColorScheme/>
             <Box
                 sx={{
                     display: "flex",
@@ -64,12 +68,11 @@ export default function SignUpPage(props: { disableCustomTheme?: boolean }) {
                     variant="h1"
                     sx={{
                         display: "flex",
-                        flexDirection: { xs: "column", sm: "row" },
+                        flexDirection: {xs: "column", sm: "row"},
                         alignItems: "center",
                         fontSize: "clamp(2rem, 10vw, 2.5rem)",
                     }}
                 >
-                    Discover&nbsp;
                     <Typography
                         component="span"
                         variant="h1"
@@ -115,7 +118,7 @@ export default function SignUpPage(props: { disableCustomTheme?: boolean }) {
                         >
                             Sign up
                         </Typography>
-                        <Box sx={{ display: "flex" }}>
+                        <Box sx={{display: "flex"}}>
                             <Typography
                                 variant="body2"
                                 color={theme.palette.info.main}
@@ -136,7 +139,6 @@ export default function SignUpPage(props: { disableCustomTheme?: boolean }) {
                         </Box>
                     </Box>
 
-                    <TextField margin="dense" placeholder="Full Name" type="text" fullWidth variant="outlined" />
                     <TextField
                         margin="dense"
                         placeholder="Email Address"
@@ -152,10 +154,14 @@ export default function SignUpPage(props: { disableCustomTheme?: boolean }) {
                         type="password"
                         fullWidth
                         variant="outlined"
-                        sx={{
-                            mb: "1rem",
-                        }}
+                        value={pass}
+                        onChange={(e) => setPass(e.target.value)}
                     />
+                    <TextField margin="dense" placeholder="Invite Code" type="text" fullWidth variant="outlined"
+                               sx={{
+                                   mb: "1rem",
+                               }}/>
+
                     <Button color="secondary" variant="contained" size="small" fullWidth onClick={handleSignUp}>
                         Sign up
                     </Button>

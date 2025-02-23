@@ -32,123 +32,124 @@ const StyledToolbar = styled(Toolbar)(({theme}) => ({
 }));
 
 export default function AppAppBar() {
-  const [open, setOpen] = React.useState(false);
-  const navigate = useNavigate();
+    const [open, setOpen] = React.useState(false);
+    const navigate = useNavigate();
 
-  const toggleDrawer = (newOpen: boolean) => () => {
-    setOpen(newOpen);
-  };
+    const toggleDrawer = (newOpen: boolean) => () => {
+        setOpen(newOpen);
+    };
 
-  const handleSignIn = () => {
-    navigate('/sign-in');
-  };
+    const handleSignIn = () => {
+        navigate('/sign-in');
+    };
 
-  const handleSignUp = () => {
-    navigate('/sign-up');
-  };
+    const handleSignUp = () => {
+        navigate('/sign-up');
+    };
 
     const handleScroll = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+            element.scrollIntoView({behavior: 'smooth'});
         }
     };
 
 
-  return (
-    <AppBar
-      position="fixed"
-      enableColorOnDark
-      sx={{
-        boxShadow: 0,
-        bgcolor: 'transparent',
-        backgroundImage: 'none',
-        mt: 'calc(var(--template-frame-height, 0px) + 28px)',
-      }}
-    >
-      <Container maxWidth="lg">
-        <StyledToolbar variant="dense" disableGutters>
-          <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0, gap: 5 }}>
-            <Sitemark />
-            <Box sx={{ display: { xs: 'none', md: 'flex', gap: 10} }}>
-              <Button variant="text" color="info" size="small"  onClick={() => handleScroll('features')}>
-                Features
-              </Button>
-              <Button variant="text" color="info" size="small"  onClick={() => handleScroll('highlights')}>
-                Highlights
-              </Button>
-              <Button variant="text" color="info" size="small" onClick={() => handleScroll('pricing')}>
-                Pricing
-              </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }} onClick={() => handleScroll('faq')}>
-                FAQ
-              </Button>
-            </Box>
-          </Box>
-          <Box
+    return (
+        <AppBar
+            position="fixed"
+            enableColorOnDark
             sx={{
-              display: { xs: 'none', md: 'flex' },
-              gap: 1,
-              alignItems: 'center',
+                boxShadow: 0,
+                bgcolor: 'transparent',
+                backgroundImage: 'none',
+                mt: 'calc(var(--template-frame-height, 0px) + 28px)',
             }}
-          >
-            <Button color="primary" variant="text" size="small" onClick={handleSignIn}>
-              Sign in
-            </Button>
-            <Button color="primary" variant="contained" size="small" onClick={handleSignUp}>
-              Sign up
-            </Button>
-            <ColorModeIconDropdown />
-          </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>
-            <ColorModeIconDropdown size="medium" />
-            <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
-              <MenuIcon />
-            </IconButton>
-            <Drawer
-              anchor="top"
-              open={open}
-              onClose={toggleDrawer(false)}
-              PaperProps={{
-                sx: {
-                  top: 'var(--template-frame-height, 0px)',
-                },
-              }}
-            >
-              <Box sx={{ p: 2, backgroundColor: 'background.default' }}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'flex-end',
-                  }}
-                >
-                  <IconButton onClick={toggleDrawer(false)}>
-                    <CloseRoundedIcon />
-                  </IconButton>
-                </Box>
+        >
+            <Container maxWidth="lg">
+                <StyledToolbar variant="dense" disableGutters>
+                    <Box sx={{flexGrow: 1, display: 'flex', alignItems: 'center', px: 0}}>
+                        <Sitemark/>
+                        <Box sx={{display: {xs: 'none', md: 'flex', gap: 10}}}>
+                            <Button variant="text" color="info" size="small" onClick={() => handleScroll('features')}>
+                                Features
+                            </Button>
+                            <Button variant="text" color="info" size="small" onClick={() => handleScroll('highlights')}>
+                                Highlights
+                            </Button>
+                            <Button variant="text" color="info" size="small" onClick={() => handleScroll('pricing')}>
+                                Pricing
+                            </Button>
+                            <Button variant="text" color="info" size="small" sx={{minWidth: 0}}
+                                    onClick={() => handleScroll('faq')}>
+                                FAQ
+                            </Button>
+                        </Box>
+                    </Box>
+                    <Box
+                        sx={{
+                            display: {xs: 'none', md: 'flex'},
+                            gap: 1,
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Button color="primary" variant="text" size="small" onClick={handleSignIn}>
+                            Sign in
+                        </Button>
+                        <Button color="primary" variant="contained" size="small" onClick={handleSignUp}>
+                            Sign up
+                        </Button>
+                        <ColorModeIconDropdown/>
+                    </Box>
+                    <Box sx={{display: {xs: 'flex', md: 'none'}, gap: 1}}>
+                        <ColorModeIconDropdown size="medium"/>
+                        <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
+                            <MenuIcon/>
+                        </IconButton>
+                        <Drawer
+                            anchor="top"
+                            open={open}
+                            onClose={toggleDrawer(false)}
+                            PaperProps={{
+                                sx: {
+                                    top: 'var(--template-frame-height, 0px)',
+                                },
+                            }}
+                        >
+                            <Box sx={{p: 2, backgroundColor: 'background.default'}}>
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        justifyContent: 'flex-end',
+                                    }}
+                                >
+                                    <IconButton onClick={toggleDrawer(false)}>
+                                        <CloseRoundedIcon/>
+                                    </IconButton>
+                                </Box>
 
-                <MenuItem>Features</MenuItem>
-                <MenuItem>Testimonials</MenuItem>
-                <MenuItem>Highlights</MenuItem>
-                <MenuItem>Pricing</MenuItem>
-                <MenuItem>FAQ</MenuItem>
-                <MenuItem>Blog</MenuItem>
-                <Divider sx={{ my: 3 }} />
-                <MenuItem>
-                  <Button color="primary" variant="contained" fullWidth onClick={handleSignUp}>
-                    Sign up
-                  </Button>
-                </MenuItem>
-                <MenuItem>
-                  <Button color="primary" variant="outlined" fullWidth onClick={handleSignIn}>
-                    Sign in
-                  </Button>
-                </MenuItem>
-              </Box>
-            </Drawer>
-          </Box>
-        </StyledToolbar>
-      </Container>
-    </AppBar>
-  );
+                                <MenuItem>Features</MenuItem>
+                                <MenuItem>Testimonials</MenuItem>
+                                <MenuItem>Highlights</MenuItem>
+                                <MenuItem>Pricing</MenuItem>
+                                <MenuItem>FAQ</MenuItem>
+                                <MenuItem>Blog</MenuItem>
+                                <Divider sx={{my: 3}}/>
+                                <MenuItem>
+                                    <Button color="primary" variant="contained" fullWidth onClick={handleSignUp}>
+                                        Sign up
+                                    </Button>
+                                </MenuItem>
+                                <MenuItem>
+                                    <Button color="primary" variant="outlined" fullWidth onClick={handleSignIn}>
+                                        Sign in
+                                    </Button>
+                                </MenuItem>
+                            </Box>
+                        </Drawer>
+                    </Box>
+                </StyledToolbar>
+            </Container>
+        </AppBar>
+    );
 }

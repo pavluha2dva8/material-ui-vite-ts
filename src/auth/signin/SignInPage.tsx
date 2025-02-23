@@ -6,7 +6,8 @@ import AppTheme from "../../shared-theme/AppTheme";
 import {
     chartsCustomizations,
     dataGridCustomizations,
-    datePickersCustomizations, treeViewCustomizations
+    datePickersCustomizations,
+    treeViewCustomizations
 } from "../../dashboard/theme/customizations";
 import Box from "@mui/material/Box";
 import theme from "../../theme";
@@ -15,6 +16,7 @@ import Button from "@mui/material/Button";
 import {Checkbox, FormControlLabel} from "@mui/material";
 import Link from "@mui/material/Link";
 import {useNavigate} from "react-router-dom";
+import {enqueueSnackbar} from "notistack";
 
 const xThemeComponents = {
     ...chartsCustomizations,
@@ -29,15 +31,25 @@ export default function SignInPage(props: { disableCustomTheme?: boolean }) {
     const handleForgotPassword = () => {
         navigate('/forgot-password');
     };
-    const handleSignUp= () => {
+    const handleSignUp = () => {
         navigate('/sign-up');
     };
 
+    const handleSignIn = () => {
+        enqueueSnackbar("Invalid email address or password", {variant: "error"});
+    };
 
     return (
         <AppTheme {...props} themeComponents={xThemeComponents}>
-            <CssBaseline enableColorScheme />
-            <Box sx={{ display: 'flex', alignItems: 'center',py:'20rem' , flexDirection:'column', height:"100vh", gap:"2rem" }}>
+            <CssBaseline enableColorScheme/>
+            <Box sx={{
+                display: 'flex',
+                alignItems: 'center',
+                py: '20rem',
+                flexDirection: 'column',
+                height: "100vh",
+                gap: "2rem"
+            }}>
                 <Typography
                     variant="h1"
                     sx={{
@@ -47,8 +59,6 @@ export default function SignInPage(props: { disableCustomTheme?: boolean }) {
                         fontSize: 'clamp(2rem, 10vw, 2.5rem)',
                     }}
                 >
-                    Discover&nbsp;
-                    {/*&nbsp;latest&nbsp;*/}
                     <Typography
                         component="span"
                         variant="h1"
@@ -62,71 +72,79 @@ export default function SignInPage(props: { disableCustomTheme?: boolean }) {
                     >
                         FartnomicsAI
                     </Typography>
-                    </Typography>
+                </Typography>
                 <Box
 
                     sx={(theme) => ({
                         display: 'flex',
                         alignItems: 'start',
-                        flexDirection:'column',
+                        flexDirection: 'column',
                         width: '450px',
-                        p:'40px',
-                        borderRadius:'10px',
+                        p: '40px',
+                        borderRadius: '10px',
 
                         backgroundColor: '#d9d9d9',
                         ...theme.applyStyles('dark', {
                             backgroundColor: theme.palette.background.default
                         }),
                     })}
-                   >
-                    <Box  sx={{ display: 'flex',justifyContent:'space-between', width:'100%', alignItems: 'center' }}>
+                >
+                    <Box sx={{display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center'}}>
 
-                    <Typography
-                        variant="h1"
-                        sx={{
-                            alignItems: 'start',
-                            fontSize: '1.2rem',
-                            mb:'0.5rem'
-                        }}
-                    >Sign in
-                    </Typography>
-                    <Box  sx={{ display: 'flex' }}>
                         <Typography
-                            variant="body2"
-                            color={theme.palette.info.main}
+                            variant="h1"
                             sx={{
-
-                                mr:'0.3rem'
+                                alignItems: 'start',
+                                fontSize: '1.2rem',
+                                mb: '0.5rem'
                             }}
-
-                        >or
+                        >Sign in
                         </Typography>
-                        <Link href="#" variant="body2" color={theme.palette.primary.main} onClick={handleSignUp}>Sign up</Link>
+                        <Box sx={{display: 'flex'}}>
+                            <Typography
+                                variant="body2"
+                                color={theme.palette.info.main}
+                                sx={{
+
+                                    mr: '0.3rem'
+                                }}
+
+                            >or
+                            </Typography>
+                            <Link href="#" variant="body2" color={theme.palette.primary.main} onClick={handleSignUp}>Sign
+                                up</Link>
+                        </Box>
                     </Box>
+                    <TextField margin="dense"
+                               placeholder="Email Address"
+                               type="email"
+                               fullWidth
+                               variant='outlined'
+                    />
+                    <TextField
+                        margin="dense"
+                        placeholder="Password"
+                        type="password"
+                        fullWidth
+                        variant="outlined"/>
+                    <Box sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        width: '100%',
+                        my: 1
+                    }}>
+                        <FormControlLabel control={<Checkbox/>} label="Remember me"/>
+                        <Link href="#" variant="body2" color={theme.palette.primary.main}
+                              onClick={handleForgotPassword}>Forgot Password?</Link>
                     </Box>
-                <TextField margin="dense"
-                           placeholder="Email Address"
-                           type="email"
-                           fullWidth
-                           variant='outlined'
-                           />
-                <TextField
-                    margin="dense"
-                    placeholder="Password"
-                    type="password"
-                    fullWidth
-                    variant="outlined"/>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems:'center', width: '100%', my: 1 }}>
-                        <FormControlLabel control={<Checkbox />} label="Remember me" />
-                        <Link href="#" variant="body2" color={theme.palette.primary.main} onClick={handleForgotPassword}>Forgot Password?</Link>
-                    </Box>
-                    <Button color="secondary" variant='contained' size="small" fullWidth >
-                        Sign up
+                    <Button color="secondary" variant='contained' size="small" fullWidth onClick={handleSignIn}>
+                        Sign in
                     </Button>
-            </Box>
+                </Box>
             </Box>
 
 
-</AppTheme>
+        </AppTheme>
     );
 }
